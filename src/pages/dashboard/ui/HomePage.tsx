@@ -7,6 +7,7 @@ import { useState } from 'react';
 import { Navigate } from 'react-router';
 import { useAuth } from '../../../app/providers/AuthProvider';
 import { useTransactionsBalance } from '../../../shared/hooks/useTransactionBalance';
+import Chart from '../../../features/chart/ui/Chart';
 
 function MainPage() {
   const [openModal, setOpenModal] = useState<boolean>(false);
@@ -20,6 +21,7 @@ function MainPage() {
       <CurrentBalance balance={balance} />
       <PeriodFilter />
       <TransactionToggle />
+      <Chart />
       {openModal && <TransactionModal setOpenModal={setOpenModal} />}
       <TransactionList openModal={openModal} setOpenModal={setOpenModal} />
     </section>

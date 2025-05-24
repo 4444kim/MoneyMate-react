@@ -1,8 +1,8 @@
 import TrashIcon from '../../../shared/icons/TrashIcon';
-import { TransactioInterface } from '../../../shared/types/transaction/transactionTypes';
+import { TransactioInterfaceGet } from '../../../shared/types/transactionTypes';
 import { deleteTransaction } from '../../../shared/api/transaction/transaction';
 
-export const TransactionItem = ({ amount, date, category, title, id }: TransactioInterface) => {
+export const TransactionItem = ({ amount, date, category, title, id }: TransactioInterfaceGet) => {
   return (
     <li className="border border-gray-300 p-3 rounded-[5px] flex items-center justify-between">
       <div className="flex items-center gap-[10px]">

@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { TransactioInterface } from '../../../shared/types/transaction/transactionTypes';
+import { TransactioInterfaceGet } from '../../../shared/types/transactionTypes';
 import { TransactionItem } from './TransactionItem';
 import { useTransactionType } from '../../../app/providers/TransactionTypeProvider';
 import { getTransactionList } from '../../../shared/api/transaction/transaction';
@@ -10,7 +10,7 @@ interface TransactionListProps {
 }
 
 function TransactionList({ openModal, setOpenModal }: TransactionListProps) {
-  const [transactionList, setTransactionList] = useState<TransactioInterface[]>([]);
+  const [transactionList, setTransactionList] = useState<TransactioInterfaceGet[]>([]);
   const { transactionType } = useTransactionType();
 
   useEffect(() => {
