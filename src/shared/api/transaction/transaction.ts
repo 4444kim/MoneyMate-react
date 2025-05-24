@@ -18,3 +18,12 @@ export const getTransactionList = async (): Promise<TransactioInterface[]> => {
   const response = await api.get('/api/transactions');
   return response.data;
 };
+
+export const deleteTransaction = async (id: number): Promise<void> => {
+  try {
+    await api.delete(`/api/transactions/${id}`);
+  } catch (error) {
+    console.error(`Ошибка при удалении транзакции с id ${id}:`, error);
+    throw error;
+  }
+};

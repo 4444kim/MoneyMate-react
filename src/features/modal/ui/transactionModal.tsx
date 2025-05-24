@@ -3,26 +3,16 @@ import Button from '../../../shared/ui/button/Button';
 import Input from '../../../shared/ui/input/Input';
 import Select from '../../../shared/ui/select/Select';
 import { createTransaction } from '../../../shared/api/transaction/transaction';
+import { useTransactionForm } from '../../../shared/hooks/useTransactionFormModal';
 
 interface TransactionModalProps {
   setOpenModal: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-const expenseCategories = [
-  { id: 1, value: 'home', label: 'Дом' },
-  { id: 2, value: 'taxi', label: 'Такси' },
-  { id: 3, value: 'other', label: 'Прочее' },
-];
-
-const incomeCategories = [
-  { id: 1, value: 'work', label: 'работа' },
-  { id: 2, value: 'freelance', label: 'Фриланс' },
-  { id: 3, value: 'other', label: 'Прочее' },
-];
-
 function TransactionModal({ setOpenModal }: TransactionModalProps) {
-  const [transactionTypeModal, setTransactionTypeModal] = useState<'EXPENSE' | 'INCOME'>('EXPENSE');
-  const categories = transactionTypeModal === 'EXPENSE' ? expenseCategories : incomeCategories;
+  const { transactionTypeModal, setTransactionTypeModal, categories, formattedDate } =
+    useTransactionForm();
+
   const [transactionData, setTransactionData] = useState({
     title: '',
     type: transactionTypeModal,
@@ -30,9 +20,6 @@ function TransactionModal({ setOpenModal }: TransactionModalProps) {
     date: '',
     category: '',
   });
-
-  const today = new Date();
-  const formattedDate = today.toISOString().split('T')[0]; // => "2025-05-24"
 
   const handleSubmit = async (event: FormEvent) => {
     event.preventDefault();

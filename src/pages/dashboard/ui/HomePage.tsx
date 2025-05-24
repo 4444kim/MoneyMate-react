@@ -10,7 +10,7 @@ import { useTransactionsBalance } from '../../../shared/hooks/useTransactionBala
 
 function MainPage() {
   const [openModal, setOpenModal] = useState<boolean>(false);
-  const { transactions, balance } = useTransactionsBalance();
+  const { balance } = useTransactionsBalance();
 
   const { isAuth } = useAuth();
   if (!isAuth) return <Navigate to="/login" replace />;
