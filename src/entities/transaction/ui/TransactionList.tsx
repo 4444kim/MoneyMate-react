@@ -33,7 +33,7 @@ function TransactionList({ openModal, setOpenModal }: TransactionListProps) {
     };
 
     fetchData();
-  }, [openModal]);
+  }, []);
 
   const filteredData = transactionList.filter((item) => item.type === transactionType);
 

@@ -34,6 +34,7 @@ function TransactionModal({ setOpenModal }: TransactionModalProps) {
     } catch (error) {
       console.error('Ошибка при создании транзакции:', error);
     }
+    setOpenModal(false);
   };
 
   return (
@@ -111,10 +112,7 @@ function TransactionModal({ setOpenModal }: TransactionModalProps) {
               />
             </div>
           </div>
-          <Button
-            className="bg-black text-white text-lg mt-5"
-            type="submit"
-            onClick={() => setOpenModal(false)}>
+          <Button className="bg-black text-white text-lg mt-5" type="submit">
             Сохранить
           </Button>
         </div>

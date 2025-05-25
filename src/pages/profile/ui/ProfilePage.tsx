@@ -130,7 +130,7 @@ export default function ProfilePage() {
         ) : (
           <p className="flex flex-col items-center gap-2">
             <span className="text-xl font-medium">
-              {profileData.firstName || 'Vlad'} {profileData.lastName || 'Kim'}
+              {profileData.firstName || 'Ivan'} {profileData.lastName || 'Ivanov'}
             </span>
             <span className="text-xl font-medium">{profileData.email || 'your@email.com'}</span>
           </p>
