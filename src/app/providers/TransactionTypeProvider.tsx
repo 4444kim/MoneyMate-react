@@ -11,7 +11,7 @@ const TransactionTypeContext = createContext<TransactionTypeContextProps | undef
 
 export const TransactionTypeProvider = ({ children }: { children: ReactNode }) => {
   const [transactionType, setTransactionType] = useState<TransactionType>('EXPENSE');
-  
+
   return (
     <TransactionTypeContext.Provider value={{ transactionType, setTransactionType }}>
       {children}
