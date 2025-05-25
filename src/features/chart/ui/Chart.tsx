@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react';
 import {
   BarChart,
   Bar,
@@ -8,10 +9,10 @@ import {
   Tooltip,
   ResponsiveContainer,
 } from 'recharts';
-import { useEffect, useState } from 'react';
 import { getTransactionList } from '../../../shared/api/transaction/transaction';
 import { TransactioInterfaceGet } from '../../../shared/types/transactionTypes';
 import { useTransactionType } from '../../../app/providers/TransactionTypeProvider';
+import ChartSkeleton from '../../../shared/ui/skeletons/ChartSkeleton';
 
 const days = ['Вс', 'Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб'];
 
@@ -22,30 +23,50 @@ interface ChartData {
 
 const Chart = () => {
   const [data, setData] = useState<ChartData[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const [isError, setIsError] = useState(false);
   const { transactionType } = useTransactionType();
 
   useEffect(() => {
     const fetchAndGroup = async () => {
-      const transactions: TransactioInterfaceGet[] = await getTransactionList();
+      setIsLoading(true);
+      setIsError(false);
+      try {
+        const transactions: TransactioInterfaceGet[] = await getTransactionList();
 
-      const grouped: ChartData[] = Array(7)
-        .fill(null)
-        .map((_, i) => ({
-          name: days[i],
-          value: 0,
-        }));
+        const grouped: ChartData[] = Array(7)
+          .fill(null)
+          .map((_, i) => ({
+            name: days[i],
+            value: 0,
+          }));
 
-      transactions.forEach((t) => {
-        if (t.type !== transactionType) return;
-        const dayIndex = new Date(t.date).getDay();
-        grouped[dayIndex].value += Number(t.amount);
-      });
+        transactions.forEach((t) => {
+          if (t.type !== transactionType) return;
+          const dayIndex = new Date(t.date).getDay();
+          grouped[dayIndex].value += Number(t.amount);
+        });
 
-      setData(grouped);
+        setData(grouped);
+        // eslint-disable-next-line @typescript-eslint/no-unused-vars
+      } catch (error) {
+        setIsError(true);
+        setData([]);
+      } finally {
+        setIsLoading(false);
+      }
     };
 
     fetchAndGroup();
   }, [transactionType]);
+
+  if (isLoading) {
+    return <ChartSkeleton />;
+  }
+
+  if (isError) {
+    return <ChartSkeleton />;
+  }
 
   return (
     <ResponsiveContainer width="100%" height={300}>
