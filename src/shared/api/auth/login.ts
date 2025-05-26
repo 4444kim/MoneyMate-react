@@ -16,6 +16,7 @@ export const loginUser = async (data: LoginData): Promise<string> => {
     } else {
       throw new Error('Token not found in response');
     }
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
   } catch (error: any) {
     throw new Error(error?.response?.data?.message || 'Login failed');
   }

@@ -5,17 +5,19 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router';
 import { loginUser } from '../../../shared/api/auth/login';
 import { FormEvent } from 'react';
+import { useAuth } from '../../../app/providers/AuthProvider';
 
 export default function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const { login } = useAuth();
   const navigate = useNavigate();
 
   const handleSubmit = async (event: FormEvent) => {
     event.preventDefault();
     try {
-      const res = await loginUser({ email, password });
-      console.log('Успещный вход:', res);
+      const token = await loginUser({ email, password });
+      login(token);
       navigate('/');
     } catch (error) {
       console.error('Ошибка при входе', error);
@@ -23,7 +25,7 @@ export default function Login() {
   };
 
   return (
-    <section className="border border-gray-300 rounded-[5px] mx-auto my-10 w-max p-5">
+    <section className="border border-gray-300 rounded-[5px] mx-auto my-30 w-max p-5">
       <form onSubmit={handleSubmit}>
         <div className="flex flex-col items-center gap-[15px]">
           <h3>Money Mate</h3>
@@ -53,7 +55,7 @@ export default function Login() {
           <Button className="bg-black text-white w-full" type="submit">
             Log in
           </Button>
-          <div className="flex gap-[40px]">
+          <div className="flex justify-between w-full">
             Don't have an account?
             <Link to="/register" className="text-green-600">
               Register

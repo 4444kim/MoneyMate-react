@@ -4,7 +4,7 @@ interface Props extends React.SVGProps<SVGSVGElement> {
   className?: string;
 }
 
-export default function RoadIcon({ className, ...props }: Props) {
+export default function FreelanseIcon({ className, ...props }: Props) {
   return (
     <svg
       id="Layer_1"

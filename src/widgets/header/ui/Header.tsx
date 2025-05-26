@@ -12,7 +12,7 @@ export const Header = () => {
     const fetchAvatar = async () => {
       try {
         const data = await getProfile();
-        setAvatar(data.avatar); // предполагается, что avatar — строка base64 или URL
+        setAvatar(data.avatar);
       } catch (err) {
         console.error('Ошибка получения аватара', err);
       }

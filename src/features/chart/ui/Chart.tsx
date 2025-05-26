@@ -14,7 +14,7 @@ import { TransactioInterfaceGet } from '../../../shared/types/transactionTypes';
 import { useTransactionType } from '../../../app/providers/TransactionTypeProvider';
 import ChartSkeleton from '../../../shared/ui/skeletons/ChartSkeleton';
 
-const days = ['Вс', 'Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб'];
+const days = ['Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб', 'Вс'];
 
 interface ChartData {
   name: string;

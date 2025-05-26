@@ -27,7 +27,7 @@ export default function Register() {
   };
 
   return (
-    <section className="border border-gray-300 rounded-[5px] mx-auto my-10 w-max p-5">
+    <section className="border border-gray-300 rounded-[5px] mx-auto my-30 w-max p-5">
       <form onSubmit={handleSubmit}>
         <div className="flex flex-col items-center gap-[15px]">
           <h3>Money Mate</h3>
@@ -79,7 +79,7 @@ export default function Register() {
           <Button className="mt-3 bg-black text-white w-full" type="submit">
             Register
           </Button>
-          <div className="flex items-center gap-[5px]">
+          <div className="flex items-center justify-between w-full">
             Already have an account?
             <Link to="/login" className="text-green-600">
               Log in
