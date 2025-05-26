@@ -43,7 +43,7 @@ const Chart = () => {
 
         transactions.forEach((t) => {
           if (t.type !== transactionType) return;
-          const dayIndex = new Date(t.date).getDay();
+          const dayIndex = (new Date(t.date).getDay() + 6) % 7;
           grouped[dayIndex].value += Number(t.amount);
         });
 
