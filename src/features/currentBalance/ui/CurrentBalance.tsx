@@ -3,6 +3,8 @@ interface CurrentBalanceProps {
 }
 
 function CurrentBalance({ balance }: CurrentBalanceProps) {
+  console.log('сработал CurrentBalance');
+
   return (
     <div className="p-[25px] border border-gray-300 rounded-[5px] bg-green-50">
       <h2 className="text-xl">Текущий баланс</h2>

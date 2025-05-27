@@ -16,7 +16,6 @@ export default function Register() {
 
   const handleSubmit = async (event: FormEvent) => {
     event.preventDefault();
-    console.log(userData);
     try {
       const res = await registerUser(userData);
       console.log('Пользователь создан:', res);

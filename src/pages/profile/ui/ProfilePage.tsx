@@ -2,10 +2,9 @@ import Button from '../../../shared/ui/button/Button';
 import Input from '../../../shared/ui/input/Input';
 import AvatarIcon from '../../../shared/icons/AvatarIcon';
 import CameraIcon from '../../../shared/icons/CameraIcon';
-import { useAuth } from '../../../app/providers/AuthProvider';
-import { Navigate } from 'react-router';
 import { useState, useEffect } from 'react';
 import { getProfile, updateProfile } from '../../../shared/api/profile/profile';
+import { useAuth } from '../../../app/providers/AuthProvider';
 
 interface ProfileDataInterface {
   firstName: string;
@@ -24,6 +23,7 @@ export default function ProfilePage() {
   const [formData, setFormData] = useState(profileData);
   const [isEdit, setIsEdit] = useState(false);
   const [avatar, setAvatar] = useState<string | null>(null);
+  const { logout } = useAuth();
 
   const handleAvatarChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
@@ -48,7 +48,7 @@ export default function ProfilePage() {
           avatar: data.avatar,
         });
       } catch (error) {
-        console.log(error);
+        console.log('error in profile', error);
       }
     };
     fetchData();
@@ -63,9 +63,6 @@ export default function ProfilePage() {
       console.error('Ошибка при сохранении профиля:', error);
     }
   };
-
-  const { isAuth, logout } = useAuth();
-  if (!isAuth) return <Navigate to="/login" replace />;
 
   return (
     <section className="border border-gray-300 rounded-[5px] mx-auto my-10 w-max p-5">
@@ -150,7 +147,7 @@ export default function ProfilePage() {
             <Button className="px-30" onClick={() => setIsEdit(true)}>
               Редактировать профиль
             </Button>
-            <Button className="px-30" onClick={logout}>
+            <Button className="px-30" onClick={() => logout()}>
               Выйти
             </Button>
           </div>

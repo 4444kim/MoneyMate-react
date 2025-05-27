@@ -68,6 +68,8 @@ const Chart = () => {
     return <ChartSkeleton />;
   }
 
+  console.log('сраюотал Chart');
+
   return (
     <ResponsiveContainer width="100%" height={300}>
       <BarChart data={data} margin={{ top: 5, right: 30, left: 20, bottom: 5 }}>

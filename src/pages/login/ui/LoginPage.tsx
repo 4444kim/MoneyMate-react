@@ -10,8 +10,8 @@ import { useAuth } from '../../../app/providers/AuthProvider';
 export default function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const { login } = useAuth();
   const navigate = useNavigate();
+  const { login } = useAuth();
 
   const handleSubmit = async (event: FormEvent) => {
     event.preventDefault();

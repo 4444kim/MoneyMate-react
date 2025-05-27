@@ -37,6 +37,8 @@ function TransactionList({ openModal, setOpenModal }: TransactionListProps) {
 
   const filteredData = transactionList.filter((item) => item.type === transactionType);
 
+  console.log('сработал TransactionList');
+
   return (
     <div className="flex flex-col gap-[20px]">
       <div className="flex items-center justify-between">

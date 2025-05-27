@@ -3,7 +3,7 @@ import Button from '../../../shared/ui/button/Button';
 
 function TransactionToggle() {
   const { transactionType, setTransactionType } = useTransactionType();
-
+  console.log('сработал TransactionToggle');
   return (
     <div className="flex justify-between">
       <Button
