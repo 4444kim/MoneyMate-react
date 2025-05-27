@@ -8,7 +8,6 @@ import TransactionIcon from '../../../shared/icons/TransactionIcon';
 import Button from '../../../shared/ui/button/Button';
 
 export const TransactionItem = ({ amount, date, category, title, id }: TransactioInterfaceGet) => {
-  console.log('сработал TransactionItem');
   return (
     <li className="border border-gray-300 p-3 rounded-[5px] flex items-center justify-between">
       <div className="flex items-center gap-[10px]">

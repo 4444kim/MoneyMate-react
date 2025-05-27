@@ -37,8 +37,6 @@ function TransactionModal({ setOpenModal }: TransactionModalProps) {
     setOpenModal(false);
   };
 
-  console.log('сработал TransactionModal');
-
   return (
     <form onSubmit={handleSubmit}>
       <div className="fixed inset-0 bg-black/50 bg-opacity-40 flex justify-center items-center z-50">

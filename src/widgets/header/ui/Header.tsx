@@ -36,8 +36,6 @@ export const Header = () => {
         ) : (
           <h1 className="text-2xl font-medium">MoneyMate</h1>
         )}
-        <Button onClick={() => navigate('/register')}>Register</Button>
-        <Button onClick={() => navigate('/login')}>Login</Button>
         <Link to="/profile">
           <button className="border border-[#000] w-[50px] h-[50px] rounded-full">
             {avatar ? (

@@ -3,7 +3,7 @@ import { TransactioInterfaceGet } from '../../../shared/types/transactionTypes';
 import { TransactionItem } from './TransactionItem';
 import { useTransactionType } from '../../../app/providers/TransactionTypeProvider';
 import { getTransactionList } from '../../../shared/api/transaction/transaction';
-import TransactionSkeleton from '../../../shared/ui/skeletons/TransactionSkeleton';
+import TransactionListSkeleton from '../../../shared/ui/skeletons/TransactionListSkeleton';
 
 interface TransactionListProps {
   openModal: boolean;
@@ -37,8 +37,6 @@ function TransactionList({ openModal, setOpenModal }: TransactionListProps) {
 
   const filteredData = transactionList.filter((item) => item.type === transactionType);
 
-  console.log('сработал TransactionList');
-
   return (
     <div className="flex flex-col gap-[20px]">
       <div className="flex items-center justify-between">
@@ -53,7 +51,7 @@ function TransactionList({ openModal, setOpenModal }: TransactionListProps) {
       </div>
 
       {isLoading ? (
-        <TransactionSkeleton />
+        <TransactionListSkeleton />
       ) : error ? (
         <div className="text-red-500">{error}</div>
       ) : filteredData.length === 0 ? (

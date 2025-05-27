@@ -1,4 +1,4 @@
-export default function TransactionSkeleton() {
+export default function TransactionListSkeleton() {
   return (
     <ul className="flex flex-col gap-[10px]">
       {Array.from({ length: 3 }).map((_, i) => (
