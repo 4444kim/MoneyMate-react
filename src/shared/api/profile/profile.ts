@@ -14,3 +14,8 @@ export const updateProfile = async (data: {
   const response = await api.put('/api/profile', data);
   return response.data;
 };
+
+export const deleteProfile = async () => {
+  const response = await api.delete('/api/profile');
+  return response.data;
+};

@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { TransactioInterfaceGet } from '../../../shared/types/transactionTypes';
+import { ITransaction } from '../../../shared/types/transactionTypes';
 import { TransactionItem } from './TransactionItem';
 import { useTransactionType } from '../../../app/providers/TransactionTypeProvider';
 import { getTransactionList } from '../../../shared/api/transaction/transaction';
@@ -11,7 +11,7 @@ interface TransactionListProps {
 }
 
 function TransactionList({ openModal, setOpenModal }: TransactionListProps) {
-  const [transactionList, setTransactionList] = useState<TransactioInterfaceGet[]>([]);
+  const [transactionList, setTransactionList] = useState<ITransaction[]>([]);
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
   const { transactionType } = useTransactionType();
@@ -34,6 +34,8 @@ function TransactionList({ openModal, setOpenModal }: TransactionListProps) {
 
     fetchData();
   }, []);
+
+  console.log(transactionList);
 
   const filteredData = transactionList.filter((item) => item.type === transactionType);
 

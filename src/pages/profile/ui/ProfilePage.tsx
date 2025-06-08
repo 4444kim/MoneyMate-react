@@ -5,16 +5,10 @@ import CameraIcon from '../../../shared/icons/CameraIcon';
 import { useState, useEffect } from 'react';
 import { getProfile, updateProfile } from '../../../shared/api/profile/profile';
 import { useAuth } from '../../../app/providers/AuthProvider';
-
-interface ProfileDataInterface {
-  firstName: string;
-  lastName: string;
-  email: string;
-  avatar: string;
-}
+import { IProfile } from '../../../shared/types/profileTypes';
 
 export default function ProfilePage() {
-  const [profileData, setProfileData] = useState<ProfileDataInterface>({
+  const [profileData, setProfileData] = useState<IProfile>({
     firstName: '',
     lastName: '',
     email: '',
@@ -135,20 +129,31 @@ export default function ProfilePage() {
 
         {isEdit ? (
           <div className="flex items-center gap-3">
-            <Button className="px-14" onClick={handleSave}>
+            <Button
+              className="px-14 hover:bg-black hover:text-white transition-colors"
+              onClick={handleSave}>
               Сохранить изменения
             </Button>
-            <Button className="px-8" onClick={() => setIsEdit(false)}>
+            <Button
+              className="px-8 hover:bg-black hover:text-white transition-colors"
+              onClick={() => setIsEdit(false)}>
               Отмена
             </Button>
           </div>
         ) : (
           <div className="flex flex-col gap-3">
-            <Button className="px-30" onClick={() => setIsEdit(true)}>
+            <Button
+              className="px-30 hover:bg-black hover:text-white transition-colors"
+              onClick={() => setIsEdit(true)}>
               Редактировать профиль
             </Button>
-            <Button className="px-30" onClick={() => logout()}>
+            <Button
+              className="px-30 hover:bg-black hover:text-white transition-colors"
+              onClick={() => logout()}>
               Выйти
+            </Button>
+            <Button className="px-30 hover:bg-black hover:text-white transition-colors">
+              Удалить профиль
             </Button>
           </div>
         )}
