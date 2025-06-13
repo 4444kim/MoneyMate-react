@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react';
 import { getTransactionList } from '../../shared/api/transaction/transaction';
-import { TransactioInterfaceGet } from '../types/transactionTypes';
+import { ITransaction } from '../types/transactionTypes';
 
 export const useTransactionsBalance = () => {
-  const [transactions, setTransactions] = useState<TransactioInterfaceGet[]>([]);
+  const [transactions, setTransactions] = useState<ITransaction[]>([]);
   const [balance, setBalance] = useState<number>(0);
 
   useEffect(() => {

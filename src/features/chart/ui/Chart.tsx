@@ -10,7 +10,7 @@ import {
   ResponsiveContainer,
 } from 'recharts';
 import { getTransactionList } from '../../../shared/api/transaction/transaction';
-import { TransactioInterfaceGet } from '../../../shared/types/transactionTypes';
+import { ITransaction } from '../../../shared/types/transactionTypes';
 import { useTransactionType } from '../../../app/providers/TransactionTypeProvider';
 import ChartSkeleton from '../../../shared/ui/skeletons/ChartSkeleton';
 
@@ -32,7 +32,7 @@ const Chart = () => {
       setIsLoading(true);
       setIsError(false);
       try {
-        const transactions: TransactioInterfaceGet[] = await getTransactionList();
+        const transactions: ITransaction[] = await getTransactionList();
 
         const grouped: ChartData[] = Array(7)
           .fill(null)

@@ -1,13 +1,12 @@
 import api from '../axios';
-import { TransactioInterfaceGet } from '../../types/transactionTypes';
-import { TransactionInterfaceCreate } from '../../types/transactionTypes';
+import { ITransaction } from '../../types/transactionTypes';
 
-export const createTransaction = async (data: TransactionInterfaceCreate) => {
+export const createTransaction = async (data: ITransaction) => {
   const response = await api.post('/api/transactions', data);
   return response.data;
 };
 
-export const getTransactionList = async (): Promise<TransactioInterfaceGet[]> => {
+export const getTransactionList = async (): Promise<ITransaction[]> => {
   const response = await api.get('/api/transactions');
   return response.data;
 };
