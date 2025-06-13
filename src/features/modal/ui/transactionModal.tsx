@@ -28,6 +28,7 @@ function TransactionModal({ setOpenModal }: TransactionModalProps) {
       ...transactionData,
       type: transactionTypeModal,
       date: formattedDate,
+      amount: Number(transactionData.amount), // <--- преобразуем в число
     };
     try {
       await createTransaction(dataToSend);
